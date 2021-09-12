@@ -1,0 +1,6 @@
+/node_modules
+.svn
+.vs
+./.idea
+/.idea/codeStyles/codeStyleConfig.xml
+/logs.log
