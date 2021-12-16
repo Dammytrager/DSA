@@ -10,8 +10,8 @@ function twoSum(nums, target) {
     let result;
     nums.forEach((item, index) => {
         if (obj[item] !== undefined) {
-            result = [...[obj[item], index]]
-            nums.length = index + 1;
+            result = [obj[item], index]
+            nums.length = index + 1; // This line is necessary to break out of the loop
         } else {
             obj[target - item] = index
         }
