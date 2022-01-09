@@ -9,16 +9,22 @@ function lengthOfLongestSubstring(s) {
     if (s.length === 0) return 0
 
     let result = 1;
+    let substring = '';
+    let obj = {};
+
     for (let i = 0; i < s.length; i++) {
-        for (let j = i; j < s.length; j++) {
-            const subString = s.slice(i, j + 1)
-            const noDuplicates = [...(new Set([...subString]))]
-            if (noDuplicates.length === subString.length) result = Math.max(subString.length, result)
+        const char = s[i];
+        if (substring.includes(char)) {
+            substring = s.slice(obj[char], i + 1)
+        } else {
+            substring = substring + char;
+            result = Math.max(result, substring.length)
         }
+        obj[char] = i + 1;
     }
 
     return result
 }
 
-const s = 'pwwkew';
+const s = 'abcabcbb';
 console.log(lengthOfLongestSubstring(s))
