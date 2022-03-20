@@ -15,5 +15,5 @@ function minimumBribes(q) {
     return bribes;
 }
 
-const arr = [2, 5, 1, 3, 4];
+const arr = [1, 2, 5, 3, 7, 8, 6, 4];
 console.log(minimumBribes(arr))

@@ -16,4 +16,8 @@ class StackFromArray {
         this.array.pop()
         return this
     }
+
+    toArray() {
+        return this.array
+    }
 }

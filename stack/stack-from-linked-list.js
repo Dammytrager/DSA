@@ -1,5 +1,5 @@
 class Node {
-    constructor(value, next = null) {
+    constructor(value = null, next = null) {
         this.value = value;
         this.next = next;
     }
@@ -7,46 +7,34 @@ class Node {
 
 class StackFromLinkedList {
     constructor() {
-        this.top = null
-        this.length = 0
-        this.skeleton = null
+        this.top = null;
     }
 
     peek() {
-        return this.top
+        return this.top.value
     }
 
     push(value) {
-        const node = new Node(value);
-
-        if (this.top === null) {
-            this.bottom = node
+        const node = new Node(value)
+        if (this.top === null) { // Stack is empty
+            this.top = node;
         } else {
-            this.top.next = node
+            node.next = this.top
+            this.top = node
         }
-
-        this.length++
-        this.top = node
-
     }
 
     pop() {
-        let skeleton = this.bottom;
-        let successor = null;
+        if (this.top === null) return
 
-        while (skeleton.next !== null) {
-            successor = skeleton
-            skeleton = skeleton.next
-        }
-
-        successor.next = null
-        this.top = successor
-        this.length--
+        let temp = this.top
+        this.top = temp.next
+        temp = null
     }
 
     toArray() {
         const result = [];
-        let skeleton = this.bottom;
+        let skeleton = this.top;
 
         while (skeleton !== null) {
             result.push(skeleton.value)
@@ -63,5 +51,7 @@ myStack.push('udemy')
 myStack.push('discord')
 myStack.push('twitter')
 
-console.log(myStack)
-console.log(myStack.toArray())
+myStack.pop()
+myStack.pop()
+myStack.pop()
+myStack.pop()
