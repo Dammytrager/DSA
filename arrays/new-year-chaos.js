@@ -6,10 +6,19 @@
  */
 function minimumBribes(q) {
     let bribes = 0;
-    for (let i = 0; i < q.length; i++) {
-        const bribeMove = q[i] - i - 1
-        if (bribeMove > 2) return 'Too chaotic'
-        else if (bribeMove > 0) bribes += bribeMove;
+    for (let currentPosition = 0; currentPosition < q.length; currentPosition++) {
+        const originalPosition = q[currentPosition] - 1
+        const diff = originalPosition - currentPosition
+
+        if (diff > 2) return console.log('Too chaotic')
+
+        if (diff <= 0) {
+            for (let i = Math.max(0, originalPosition - 1); i < currentPosition; i++) {
+                const predecessorPosition = q[i] - 1;
+
+                if (predecessorPosition > originalPosition) bribes++
+            }
+        }
     }
 
     return bribes;
